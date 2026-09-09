@@ -1,0 +1,6 @@
+name: Local Environment
+color: 180
+values:
+  - key: baseUrl
+    value: http://localhost:9100
+    enabled: true

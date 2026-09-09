@@ -4,7 +4,13 @@ method: GET
 headers:
   Accept: application/json
 pathVariables:
-  id: "1"
-settings: {}
+  id: "0"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Expected status code is 200', function () {
+          pm.response.to.have.status(200);
+      })
+    language: text/javascript
 examples: ./.resources/Retrieve a vehicle.resources/examples
 order: 2000

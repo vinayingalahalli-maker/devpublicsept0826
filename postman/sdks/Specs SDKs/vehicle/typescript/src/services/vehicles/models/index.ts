@@ -1,0 +1,15 @@
+export type { GetVehiclesOkResponse } from './get-vehicles-ok-response';
+export type { CreateVehiclesCreatedResponse } from './create-vehicles-created-response';
+export type { CreateVehiclesRequest } from './create-vehicles-request';
+export type { GetVehiclesByIdOkResponse } from './get-vehicles-by-id-ok-response';
+export type { UpdateVehiclesByIdOkResponse } from './update-vehicles-by-id-ok-response';
+export type { UpdateVehiclesByIdRequest } from './update-vehicles-by-id-request';
+export type { GetVehiclesInternalServerErrorResponse } from './get-vehicles-internal-server-error-response';
+export type { CreateVehiclesBadRequestResponse } from './create-vehicles-bad-request-response';
+export type { CreateVehiclesConflictResponse } from './create-vehicles-conflict-response';
+export type { CreateVehiclesInternalServerErrorResponse } from './create-vehicles-internal-server-error-response';
+export type { GetVehiclesByIdNotFoundResponse } from './get-vehicles-by-id-not-found-response';
+export type { GetVehiclesByIdInternalServerErrorResponse } from './get-vehicles-by-id-internal-server-error-response';
+export type { UpdateVehiclesByIdBadRequestResponse } from './update-vehicles-by-id-bad-request-response';
+export type { UpdateVehiclesByIdInternalServerErrorResponse } from './update-vehicles-by-id-internal-server-error-response';
+export type { DeleteVehiclesByIdInternalServerErrorResponse } from './delete-vehicles-by-id-internal-server-error-response';

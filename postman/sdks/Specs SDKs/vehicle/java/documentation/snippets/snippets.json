@@ -1,0 +1,24 @@
+{
+  "endpoints": {
+    "/vehicles": {
+      "get": "import com.vehicleservicespecsdk.VehicleServiceSpecSdk;\nimport com.vehicleservicespecsdk.models.GetVehiclesOkResponse;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tVehicleServiceSpecSdk vehicleServiceSpecSdk = new VehicleServiceSpecSdk();\n\n\t\tList<GetVehiclesOkResponse> response = vehicleServiceSpecSdk.vehicles.getVehicles();\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "post": "import com.vehicleservicespecsdk.VehicleServiceSpecSdk;\nimport com.vehicleservicespecsdk.models.CreateVehiclesCreatedResponse;\nimport com.vehicleservicespecsdk.models.CreateVehiclesParameters;\nimport com.vehicleservicespecsdk.models.CreateVehiclesRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tVehicleServiceSpecSdk vehicleServiceSpecSdk = new VehicleServiceSpecSdk();\n\n\t\tCreateVehiclesRequest createVehiclesRequest = CreateVehiclesRequest.builder()\n\t\t\t.nickName(\"nickName\")\n\t\t\t.vin(\"vin\")\n\t\t\t.make(\"make\")\n\t\t\t.model(\"model\")\n\t\t\t.year(\"year\")\n\t\t\t.miles(3L)\n\t\t\t.build();\n\t\t\n\t\tCreateVehiclesParameters requestParameters = CreateVehiclesParameters.builder()\n\t\t\t.xMockResponseCode(7L)\n\t\t\t.requestBody(createVehiclesRequest)\n\t\t\t.build();\n\n\t\tCreateVehiclesCreatedResponse response = vehicleServiceSpecSdk.vehicles.createVehicles(requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/vehicles/{id}": {
+      "get": "import com.vehicleservicespecsdk.VehicleServiceSpecSdk;\nimport com.vehicleservicespecsdk.models.GetVehiclesByIdOkResponse;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tVehicleServiceSpecSdk vehicleServiceSpecSdk = new VehicleServiceSpecSdk();\n\n\t\tGetVehiclesByIdOkResponse response = vehicleServiceSpecSdk.vehicles.getVehiclesById(3L);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "patch": "import com.vehicleservicespecsdk.VehicleServiceSpecSdk;\nimport com.vehicleservicespecsdk.models.UpdateVehiclesByIdOkResponse;\nimport com.vehicleservicespecsdk.models.UpdateVehiclesByIdRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tVehicleServiceSpecSdk vehicleServiceSpecSdk = new VehicleServiceSpecSdk();\n\n\t\tUpdateVehiclesByIdRequest updateVehiclesByIdRequest = UpdateVehiclesByIdRequest.builder()\n\t\t\t.nickName(\"nickName\")\n\t\t\t.vin(\"vin\")\n\t\t\t.make(\"make\")\n\t\t\t.model(\"model\")\n\t\t\t.year(\"year\")\n\t\t\t.miles(10L)\n\t\t\t.build();\n\n\t\tUpdateVehiclesByIdOkResponse response = vehicleServiceSpecSdk.vehicles.updateVehiclesById(3L, updateVehiclesByIdRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "delete": "import com.vehicleservicespecsdk.VehicleServiceSpecSdk;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tVehicleServiceSpecSdk vehicleServiceSpecSdk = new VehicleServiceSpecSdk();\n\n\t\tvehicleServiceSpecSdk.vehicles.deleteVehiclesById(3L);\n    }\n}\n"
+    }
+  },
+  "methodResponses": {
+    "/vehicles": {
+      "get": "System.out.println(response);",
+      "post": "System.out.println(response);"
+    },
+    "/vehicles/{id}": {
+      "get": "System.out.println(response);",
+      "patch": "System.out.println(response);"
+    }
+  },
+  "example": "import com.vehicleservicespecsdk.VehicleServiceSpecSdk;\nimport com.vehicleservicespecsdk.exceptions.ApiError;\nimport com.vehicleservicespecsdk.models.GetVehiclesOkResponse;\nimport java.util.List;\n  \npublic class Main {\n  public static void main(String[] args) {\n    VehicleServiceSpecSdk vehicleServiceSpecSdk = new VehicleServiceSpecSdk();\n\n\n    try {\n      List<GetVehiclesOkResponse> response = vehicleServiceSpecSdk.vehicles.getVehicles();\n        \n      System.out.println(response);\n    } catch (ApiError e) {\n      e.printStackTrace();\n    }\n\n    System.exit(0);\n  }\n}\n"
+}

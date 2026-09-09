@@ -40,6 +40,5 @@ body:
       "year": "1994",
       "miles": 159864
     }
-settings: {}
 examples: ./.resources/Create a vehicle.resources/examples
 order: 3000

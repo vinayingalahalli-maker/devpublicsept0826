@@ -17,6 +17,12 @@ body:
       "year": "1994",
       "miles": 159999
     }
-settings: {}
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Expected status code is 200', function () {
+          pm.response.to.have.status(200);
+      })
+    language: text/javascript
 examples: ./.resources/Update a collection.resources/examples
 order: 3000

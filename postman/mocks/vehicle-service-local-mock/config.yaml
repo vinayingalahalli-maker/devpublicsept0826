@@ -1,0 +1,23 @@
+id: 01a08514-ecf6-70ed-a083-ed76238b11b5
+version: 1
+name: Vehicle Service Local Mock
+slug: vehicle-service-local
+enableSession: true
+protocol: http
+port: 9100
+autoRestartOnChange: true
+logging:
+  level: verbose
+  showBody: true
+associations:
+  - entityType: collection
+    entityId: 7953d1eF22aBf7965ef5f2Cc
+    relation: source
+    syncEnabled: true
+    meta: null
+    updatedAt: 2026-09-09T07:37:27.000Z
+scenarios:
+  - name: default
+    id: 01a08519-aee5-7671-a97d-099f0e7d32c2
+    path: ./default.js
+    default: true

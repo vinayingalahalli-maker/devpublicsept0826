@@ -46,6 +46,5 @@ scripts:
           pm.response.to.have.status(201);
       });
     language: text/javascript
-settings: {}
 examples: ./.resources/Create a vehicle.resources/examples
 order: 1000
