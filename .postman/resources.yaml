@@ -1,0 +1,15 @@
+workspace:
+  id: f47a1bcb-4b82-4544-a8fa-f33ef171c3d7
+cloudResources:
+  collections:
+    ../postman/collections/Vehicle Service Collection - QA: 58046825-c4a56aa6-aca1-4bf7-8811-dd2b79d244de
+    ../postman/collections/Vehicle Service Collection: 58046823-064bf49d-202e-4a81-ae5c-7826706e3b9a
+  environments:
+    ../postman/environments/Vehicle Service Mock Environment.environment.yaml: 58046825-b73906b3-6dea-4f35-8812-77564db7297e
+  globals:
+    ../postman/globals/workspace.globals.yaml: 034ba3a8-baa3-4a9e-8885-9561ba8256af
+  specs:
+    ../postman/specs/Vehicle Service Spec/index.yaml: 99cdac4a-5aee-4039-aed5-83ff48c19351
+resourceNameMappings:
+  specs:
+    - ../postman/specs/Vehicle Service Spec/index.yaml: Vehicle Service Spec

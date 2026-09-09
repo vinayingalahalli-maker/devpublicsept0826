@@ -1,0 +1,10 @@
+$kind: collection
+description: this is my vehicle service description
+variables:
+  baseUrl: "{{baseUrl}}"
+auth:
+  - id: a96f300a-2fa4-42eb-b669-f257e2e472d3
+    type: apikey
+    name: apikey auth
+    credentials:
+      key: X-API-Key

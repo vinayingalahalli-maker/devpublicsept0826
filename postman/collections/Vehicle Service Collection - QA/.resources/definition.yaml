@@ -1,0 +1,4 @@
+$kind: collection
+description: this is my vehicle service description
+variables:
+  baseUrl: "{{baseUrl}}"
