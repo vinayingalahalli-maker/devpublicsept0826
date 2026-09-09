@@ -1,0 +1,360 @@
+openapi: 3.0.0
+info:
+  title: Vehicle Service Collection
+  version: 1.0.0
+  description: this is my vehicle service description
+servers:
+  - url: '{{baseUrl}}'
+paths:
+  /vehicles:
+    get:
+      summary: Get all vehicles
+      responses:
+        '200':
+          description: 200 - Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    nickName:
+                      type: string
+                    vin:
+                      type: string
+                    make:
+                      type: string
+                    model:
+                      type: string
+                    year:
+                      type: string
+                      format: utc-millisec
+                    miles:
+                      type: integer
+              example:
+                - id: 1
+                  nickName: The Lisa Marie
+                  vin: 4M2DV11W4RDJ53329
+                  make: Mercury
+                  model: Villager
+                  year: '1994'
+                  miles: 159864
+                - id: 2
+                  nickName: Dolly
+                  vin: JN8AZ2KR1AT169594
+                  make: Nissan
+                  model: Cube
+                  year: '2010'
+                  miles: 59000
+        '500':
+          description: 500 - Unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: An unexpected error occurred.
+    post:
+      summary: Create a vehicle
+      parameters:
+        - name: x-mock-response-code
+          in: header
+          schema:
+            type: integer
+          example: 409
+      responses:
+        '201':
+          description: 201 - Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nickName:
+                    type: string
+                  vin:
+                    type: string
+                  make:
+                    type: string
+                  model:
+                    type: string
+                  year:
+                    type: string
+                  miles:
+                    type: string
+              example:
+                id: 1
+                nickName: The Lisa Marie
+                vin: 4M2DV11W4RDJ53329
+                make: Mercury
+                model: Villager
+                year: '1994'
+                miles: 159,864
+        '400':
+          description: 400 - Missing required attribute
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: 'Request body missing required attribute: vin'
+        '409':
+          description: 409 - Vehicle already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: >-
+                  Vehicle with VIN JN8AZ2KR1AT169594 already exists. Existing
+                  vehicle ID: 2
+        '500':
+          description: 500 - Unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: An unexpected error occurred.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nickName:
+                  type: string
+                vin:
+                  type: string
+                make:
+                  type: string
+                model:
+                  type: string
+                year:
+                  type: string
+                miles:
+                  type: integer
+            example:
+              nickName: The Lisa Marie
+              vin: 4M2DV11W4RDJ53329
+              make: Mercury
+              model: Villager
+              year: '1994'
+              miles: 159864
+      description: >-
+        Creates a new vehicle record in the system.
+
+
+        **Endpoint:** `POST {{baseUrl}}/vehicles`
+
+
+        **Request Body (JSON)**
+
+
+        | Field | Type | Description |
+
+        |-------|------|-------------|
+
+        | `nickName` | string | A friendly name or alias for the vehicle |
+
+        | `vin` | string | Vehicle Identification Number (VIN) |
+
+        | `make` | string | Manufacturer of the vehicle (e.g. Ford, Toyota) |
+
+        | `model` | string | Model name of the vehicle |
+
+        | `year` | string | Model year of the vehicle |
+
+        | `miles` | integer | Current odometer reading in miles |
+
+
+        **Responses**
+
+
+        | Status | Meaning |
+
+        |--------|---------|
+
+        | `201 Created` | Vehicle was successfully created |
+
+        | `400 Bad Request` | One or more required attributes are missing from
+        the request body |
+
+        | `409 Conflict` | A vehicle with the same VIN already exists |
+
+        | `500 Internal Server Error` | An unexpected error occurred on the
+        server |
+  /vehicles/{id}:
+    get:
+      summary: Retrieve a vehicle
+      responses:
+        '200':
+          description: 200 - Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  nickName:
+                    type: string
+                  vin:
+                    type: string
+                  make:
+                    type: string
+                  model:
+                    type: string
+                  year:
+                    type: string
+                  miles:
+                    type: integer
+              example:
+                id: '{{$pathSegments ''1''}}'
+                nickName: '{{$randomFullName}}'
+                vin: 4M2DV11W4RDJ53329
+                make: Mercury
+                model: Villager
+                year: '1994'
+                miles: 159864
+        '404':
+          description: 404 - Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: 'Vehicle with id: 0 not found.'
+        '500':
+          description: 500 - Unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: An unexpected error occurred.
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+    patch:
+      summary: Update a collection
+      responses:
+        '200':
+          description: 200 - Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nickName:
+                    type: string
+                  vin:
+                    type: string
+                  make:
+                    type: string
+                  model:
+                    type: string
+                  year:
+                    type: string
+                  miles:
+                    type: integer
+              example:
+                id: 1
+                nickName: The Lisa Marie
+                vin: 4M2DV11W4RDJ53329
+                make: Mercury
+                model: Villager
+                year: '1994'
+                miles: 159999
+        '400':
+          description: 400 - Bad request body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Bad request body.
+        '500':
+          description: 500 - Unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: An unexpected error occurred.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nickName:
+                  type: string
+                vin:
+                  type: string
+                make:
+                  type: string
+                model:
+                  type: string
+                year:
+                  type: string
+                miles:
+                  type: integer
+            example:
+              nickName: The Lisa Marie
+              vin: 4M2DV11W4RDJ53329
+              make: Mercury
+              model: Villager
+              year: '1994'
+              miles: 159999
+    delete:
+      summary: Delete a vehicle
+      responses:
+        '204':
+          description: 204 - Success
+        '500':
+          description: 500 - Unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: An unexpected error occurred.

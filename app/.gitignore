@@ -1,0 +1,29 @@
+# Maven
+target/
+
+# Compiled class files
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Maven wrapper
+.mvn/
+!.mvn/wrapper/maven-wrapper.properties
+
+# Logs
+*.log
+
+# OS
+.DS_Store

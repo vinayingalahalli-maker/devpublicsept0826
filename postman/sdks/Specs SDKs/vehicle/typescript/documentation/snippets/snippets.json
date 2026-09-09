@@ -1,0 +1,24 @@
+{
+  "endpoints": {
+    "/vehicles": {
+      "get": "import { VehicleServiceSpecSdk } from 'vehicle-service-spec-sdk';\n\n(async () => {\n  const vehicleServiceSpecSdk = new VehicleServiceSpecSdk({});\n\n  const data = await vehicleServiceSpecSdk.vehicles.getVehicles();\n\n  console.log(data);\n})();\n",
+      "post": "import { CreateVehiclesRequest, VehicleServiceSpecSdk } from 'vehicle-service-spec-sdk';\n\n(async () => {\n  const vehicleServiceSpecSdk = new VehicleServiceSpecSdk({});\n\n  \n  const createVehiclesRequest: CreateVehiclesRequest = {\t\n    nickName: \"nickName\",\n    vin: \"vin\",\n    make: \"make\",\n    model: \"model\",\n    year: \"year\",\n    miles: 9\n  };\n\n  const data = await vehicleServiceSpecSdk.vehicles.createVehicles(\n  createVehiclesRequest,\n  {\n      xMockResponseCode: 5,\n  }\n);\n\n  console.log(data);\n})();\n"
+    },
+    "/vehicles/{id}": {
+      "get": "import { VehicleServiceSpecSdk } from 'vehicle-service-spec-sdk';\n\n(async () => {\n  const vehicleServiceSpecSdk = new VehicleServiceSpecSdk({});\n\n  const data = await vehicleServiceSpecSdk.vehicles.getVehiclesById(1);\n\n  console.log(data);\n})();\n",
+      "patch": "import { UpdateVehiclesByIdRequest, VehicleServiceSpecSdk } from 'vehicle-service-spec-sdk';\n\n(async () => {\n  const vehicleServiceSpecSdk = new VehicleServiceSpecSdk({});\n\n  \n  const updateVehiclesByIdRequest: UpdateVehiclesByIdRequest = {\t\n    nickName: \"nickName\",\n    vin: \"vin\",\n    make: \"make\",\n    model: \"model\",\n    year: \"year\",\n    miles: 123\n  };\n\n  const data = await vehicleServiceSpecSdk.vehicles.updateVehiclesById(\n  1,\n  updateVehiclesByIdRequest\n);\n\n  console.log(data);\n})();\n",
+      "delete": "import { VehicleServiceSpecSdk } from 'vehicle-service-spec-sdk';\n\n(async () => {\n  const vehicleServiceSpecSdk = new VehicleServiceSpecSdk({});\n\n  const data = await vehicleServiceSpecSdk.vehicles.deleteVehiclesById(1);\n\n  console.log(data);\n})();\n"
+    }
+  },
+  "methodResponses": {
+    "/vehicles": {
+      "get": "[{ 'id': 1, 'nickName': 'test-value', 'vin': 'test-value', 'make': 'test-value', 'model': 'test-value', 'year': 'test-value', 'miles': 1 }]",
+      "post": "{ 'id': 1, 'nickName': 'test-value', 'vin': 'test-value', 'make': 'test-value', 'model': 'test-value', 'year': 'test-value', 'miles': 'test-value' }"
+    },
+    "/vehicles/{id}": {
+      "get": "{ 'id': 'test-value', 'nickName': 'test-value', 'vin': 'test-value', 'make': 'test-value', 'model': 'test-value', 'year': 'test-value', 'miles': 1 }",
+      "patch": "{ 'id': 1, 'nickName': 'test-value', 'vin': 'test-value', 'make': 'test-value', 'model': 'test-value', 'year': 'test-value', 'miles': 1 }"
+    }
+  },
+  "example": "import { VehicleServiceSpecSdk } from 'vehicle-service-spec-sdk';\n\n(async () => {\n  const vehicleServiceSpecSdk = new VehicleServiceSpecSdk({});\n\n  const data = await vehicleServiceSpecSdk.vehicles.getVehicles();\n\n  console.log(data);\n})();\n"
+}

@@ -1,0 +1,50 @@
+$kind: http-request
+description: |-
+  Creates a new vehicle record in the system.
+
+  **Endpoint:** `POST {{baseUrl}}/vehicles`
+
+  **Request Body (JSON)**
+
+  | Field | Type | Description |
+  |-------|------|-------------|
+  | `nickName` | string | A friendly name or alias for the vehicle |
+  | `vin` | string | Vehicle Identification Number (VIN) |
+  | `make` | string | Manufacturer of the vehicle (e.g. Ford, Toyota) |
+  | `model` | string | Model name of the vehicle |
+  | `year` | string | Model year of the vehicle |
+  | `miles` | integer | Current odometer reading in miles |
+
+  **Responses**
+
+  | Status | Meaning |
+  |--------|---------|
+  | `201 Created` | Vehicle was successfully created |
+  | `400 Bad Request` | One or more required attributes are missing from the request body |
+  | `409 Conflict` | A vehicle with the same VIN already exists |
+  | `500 Internal Server Error` | An unexpected error occurred on the server |
+url: "{{baseUrl}}/vehicles"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nickName": "The Lisa Marie",
+      "vin": "4M2DV11W4RDJ53329",
+      "make": "Mercury",
+      "model": "Villager",
+      "year": "1994",
+      "miles": 159864
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Vehicle created successfully", function () {
+          pm.response.to.have.status(201);
+      });
+    language: text/javascript
+examples: ./.resources/Create a vehicle.resources/examples
+order: 1000

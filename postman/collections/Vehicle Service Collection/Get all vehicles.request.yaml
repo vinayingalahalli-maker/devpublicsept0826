@@ -1,0 +1,27 @@
+$kind: http-request
+url: "{{baseUrl}}/vehicles"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const responseJson = pm.response.json();
+      const vehicles = Array.isArray(responseJson) ? responseJson : responseJson.vehicles;
+
+      pm.test("Response contains at least one vehicle", function () {
+          pm.expect(vehicles).to.be.an("array").that.is.not.empty;
+      });
+      pm.test("Retrived all vehicles Successfully", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Every vehicle VIN is a string", function () {
+          pm.expect(vehicles).to.be.an("array");
+          vehicles.forEach(function (vehicle) {
+              pm.expect(vehicle.vin).to.be.a("string");
+          });
+      });
+    language: text/javascript
+examples: ./.resources/Get all vehicles.resources/examples
+order: 5000

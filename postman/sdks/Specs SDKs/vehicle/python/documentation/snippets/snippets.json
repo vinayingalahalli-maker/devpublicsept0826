@@ -1,0 +1,24 @@
+{
+  "endpoints": {
+    "/vehicles": {
+      "get": "from vehicle_service_spec_sdk import VehicleServiceSpecSdk\n\nsdk = VehicleServiceSpecSdk(\n    timeout=10\n)\n\nresult = sdk.vehicles.get_vehicles()\n\nprint(result)\n",
+      "post": "from vehicle_service_spec_sdk import VehicleServiceSpecSdk\nfrom vehicle_service_spec_sdk.models import CreateVehiclesRequest\n\nsdk = VehicleServiceSpecSdk(\n    timeout=10\n)\n\nrequest_body = CreateVehiclesRequest(\n    nick_name=\"nickName\",\n    vin=\"vin\",\n    make=\"make\",\n    model=\"model\",\n    year=\"year\",\n    miles=4\n)\n\nresult = sdk.vehicles.create_vehicles(\n    request_body=request_body,\n    x_mock_response_code=10\n)\n\nprint(result)\n"
+    },
+    "/vehicles/{id}": {
+      "get": "from vehicle_service_spec_sdk import VehicleServiceSpecSdk\n\nsdk = VehicleServiceSpecSdk(\n    timeout=10\n)\n\nresult = sdk.vehicles.get_vehicles_by_id(id_=1)\n\nprint(result)\n",
+      "patch": "from vehicle_service_spec_sdk import VehicleServiceSpecSdk\nfrom vehicle_service_spec_sdk.models import UpdateVehiclesByIdRequest\n\nsdk = VehicleServiceSpecSdk(\n    timeout=10\n)\n\nrequest_body = UpdateVehiclesByIdRequest(\n    nick_name=\"nickName\",\n    vin=\"vin\",\n    make=\"make\",\n    model=\"model\",\n    year=\"year\",\n    miles=7\n)\n\nresult = sdk.vehicles.update_vehicles_by_id(\n    request_body=request_body,\n    id_=1\n)\n\nprint(result)\n",
+      "delete": "from vehicle_service_spec_sdk import VehicleServiceSpecSdk\n\nsdk = VehicleServiceSpecSdk(\n    timeout=10\n)\n\nresult = sdk.vehicles.delete_vehicles_by_id(id_=1)\n\nprint(result)\n"
+    }
+  },
+  "methodResponses": {
+    "/vehicles": {
+      "get": "print(result)",
+      "post": "print(result)"
+    },
+    "/vehicles/{id}": {
+      "get": "print(result)",
+      "patch": "print(result)"
+    }
+  },
+  "example": "from vehicle_service_spec_sdk import VehicleServiceSpecSdk\n\nsdk = VehicleServiceSpecSdk(\n    timeout=10\n)\n\nresult = sdk.vehicles.get_vehicles()\n\nprint(result)\n"
+}
